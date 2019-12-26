@@ -28,5 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls)),
     path('',views.index,name='index'),
-    path('HF/',views.FormHardware,name='FH')
+    path('HF/',views.FormHardware,name='FH'),
+    path('prueba/',views.prueba, name="prueba"),
+    path('Empleado/<idarea>/',views.EmpleadoDetail),
 ]

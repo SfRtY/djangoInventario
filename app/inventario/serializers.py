@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hardware,Software,Area
+from .models import Hardware,Software,Area,Empleado
 
 class HardwareSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,9 @@ class SoftwareSerializer(serializers.ModelSerializer):
 class AreaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Area
-        fields=('nombrearea','abreviatura')
+        fields=('codigoarea','nombrearea','abreviatura')
+
+class EmpleadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Empleado
+        fields=('dni','id_area','nombre_empleado')

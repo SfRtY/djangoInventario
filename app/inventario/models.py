@@ -33,4 +33,13 @@ class Area(models.Model):
     class Meta:
         managed = False
         db_table = 'area'
+        
+class Empleado(models.Model):
+    dni = models.CharField(primary_key=True, max_length=8)
+    id_area = models.CharField(max_length=3)
+    nombre_empleado = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'empleado'
 

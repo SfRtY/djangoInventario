@@ -12,6 +12,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
     <link rel="stylesheet" href="{% static 'css/mnav.css' %}">
+    {%block insertcss%}
+    {%endblock%}
     {%load bootstrap4%}
     {%bootstrap_css%}
 </head>  
@@ -33,7 +35,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        INGRESAR A INVENTARIO
+                        INVENTARIO
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--<li><a class="dropdown-item" href="#">Action</a></li>
@@ -43,17 +45,13 @@
                         <li class="nav-item dropdown">
                                 <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    INGRESAR HARDWARE
+                                    HARDWARE
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li></li><a class="dropdown-item" href="#">Something else here</a></li>
                                     <li class="nav-item dropdown">
                                             <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
-                                                Dropdown
+                                                INGRESAR HARDWARE
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -61,23 +59,26 @@
                                                 <div class="dropdown-divider"></div>
                                                 <li></li><a class="dropdown-item" href="#">Something else here</a></li>
                                             </ul>
-                                        </li>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">ACTUALIZAR HARDWARE</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">BUSCAR HARDWARE</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">ELIMINAR HARDWARE</a></li>
+
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    INGRESAR SOFTWARE
+                                    SOFTWARE
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li></li><a class="dropdown-item" href="#">Something else here</a></li>
                                     <li class="nav-item dropdown">
                                             <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
-                                                Dropdown
+                                                INGRESAR SOFTWARE
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -86,6 +87,12 @@
                                                 <li></li><a class="dropdown-item" href="#">Something else here</a></li>
                                             </ul>
                                         </li>
+                                        <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">ACTUALIZAR SOFTWARE</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">BUSCAR SOFTWARE</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">ELIMINAR SOFTWARE</a></li>
                                 </ul>
                             </li>
                     </ul>
@@ -100,6 +107,8 @@
     {%block content%}
     {%endblock%}
     {% bootstrap_javascript jquery='full' %}
+    {%block insertjs%}
+    {%endblock%}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="{% static 'js/mnav.js' %}"></script>
     <script>

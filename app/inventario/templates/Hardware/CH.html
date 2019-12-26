@@ -40,20 +40,28 @@
                             </div>
                     </div>
                     <div class="form-group row">
-                            <label for="" class="col-4 col-form-label">Empleado Final</label>
-                            <div class="col-8">
-                                <input type="text" class="form-control" name="empleadofinal" id="codigoActivo">
-                            </div>
+                        <label for="" class="col-4 col-form-label">Area:</label>
+                        <div class="col-8">
+                            <select id="sarea" class="form-control" name="area">
+                                {%for q in query1%}
+                                {% if forloop.first %}
+                                <option value="{{q.codigoarea}}" selected>{{q.nombrearea}}</option>
+                                {%else%}
+                                <option value="{{q.codigoarea}}">{{q.nombrearea}}</option>
+                                {% endif %}
+                                {%endfor%}
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group row">
-                            <label for="" class="col-4 col-form-label">Area</label>
+                            <label for="" class="col-4 col-form-label">Empleado Final</label>
                             <div class="col-8">
-                                <select id="inputState" class="form-control" name="area">
-                                    {%for q in query%}
+                                <select id="sempleado" class="form-control" name="area">
+                                    {%for q in query2%}
                                     {% if forloop.first %}
-                                    <option selected>{{q.nombrearea}}</option>
+                                    <option value="{{q.codigoarea}}" selected>{{q.nombre_empleado}}</option va>
                                     {%else%}
-                                    <option>{{q.nombrearea}}</option>
+                                    <option>{{q.nombre_empleado}}</option>
                                     {% endif %}
                                     {%endfor%}
                                 </select>
