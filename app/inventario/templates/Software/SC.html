@@ -1,94 +1,101 @@
-<!DOCTYPE html>
-<html lang="es">  
-  <head>    
-    <title>Inventario Software</title>    
-    <meta charset="UTF-8">
-    <meta name="title" content="Título de la WEB">
-    <meta name="description" content="Descripción de la WEB">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-</head>  
-  <body>
-        <div class="modal-dialog text-center">
-                <div class="col-12 main-section">
-                    <div class="modal-content">
-                        <div class="col-12 ">
-                            <h1>INVENTARIO SOFTWARE</h1>
-                        </div>
-                        <form class="col-12" th:action="@{/login}" method="get">
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Nombre del programa:</label>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="codigoActivo">
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Version:</label>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="codigoActivo">
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Encargado del software:</label>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="codigoActivo">
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Licencia:</label>
-                                    <div class="col-8">
-                                        <select id="inputState" class="form-control">
-                                            <option selected>SI</option>
-                                            <option>NO</option>
-                                        </select>
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Equipo:</label>
-                                    <div class="col-8">
-                                        <select id="inputState" class="form-control">
-                                            <option selected>PC</option>
-                                            <option>Laptop</option>
-                                        </select>
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Codigo de Bien</label>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="codigoActivo">
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Sistema Operativo</label>
-                                    <div class="col-8">
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Windows 10</option>
-                                            <option>Windows 8</option>
-                                            <option>Windows 7</option>
-                                        </select>
-                                    </div>
-                            </div>
-                            <div class="form-group row">
-                                    <label for="" class="col-4 col-form-label">Numero de Serie</label>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="codigoActivo">
-                                    </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
-                        </form>
-
-                        <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                            Invalid username and password.
-                        </div>
-                        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-                            You have been logged out.
-                        </div>
-                    </div>
-                </div>
-            </div>
-  </body>
-  </html>
+{% extends '../base.html' %} {%load static%} {%block title%} Inventario Software
+{%endblock%} {%block insertcss%}
+<link rel="stylesheet" href="{% static 'css/usr.css' %}" />
+{%endblock%} {%block content%}
+<div class="modal-dialog modal-lg text-center">
+  <div class="col-12 main-section">
+    <div class="modal-content">
+      <div class="col-12 user-img">
+        <h1>INVENTARIO SOFTWARE</h1>
+      </div>
+      {%if messages%} {%for message in messages%}
+      <div id="Message" {% if message.tags %} class="{{message.tags}}" {%endif%} role="alert">
+        {{message}}
+      </div>
+      {%endfor%} {%endif%}
+      <form class="col-12" action="/Software/SC/" method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Nombre del Software</label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="nombre_software" name="nombre_software" maxlength="25"
+              required />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Version del Software</label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="version_software" name="version_software" maxlength="10"
+              onkeypress="return event.charCode >= 46 && event.charCode <= 57" required />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Licencia de software</label>
+          <div class="col-8">
+            <select id="licencia_software" class="form-control" name="licencia_software">
+              <option value="Si" selected>Si</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Tipo de Equipo</label>
+          <div class="col-8">
+            <select id="tipo_equipo_s" class="form-control" name="tipo_equipo_s">
+              <option value="Pc" selected>Pc</option>
+              <option value="Laptop">Laptop</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Codigo del Bien</label>
+          <div class="col-8">
+            <input type="text" class="form-control" name="codigo_bien_s" id="codigo_bien_s" maxlength="12"
+              onkeypress="return event.charCode >= 46 && event.charCode <= 57" required />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Sistema Operativo</label>
+          <div class="col-8">
+            <select id="sistema_operativo" class="form-control" name="sistema_operativo">
+              <option value="Windows 10" selected>Windows 10</option>
+              <option value="Windows 8.1">Windows 8.1</option>
+              <option value="Windows 7">Windows 7</option>
+              <option value="Windows XP">Windows XP</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Area:</label>
+          <div class="col-8">
+            <select id="sarea" class="form-control" name="">
+              {%for q in queryarea%} {% if forloop.first %}
+              <option value="{{q.id_area}}" selected>{{q.nombre_area}}</option>
+              {%else%}
+              <option value="{{q.id_area}}">{{q.nombre_area}}</option>
+              {% endif %} {%endfor%}
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label">Empleado Final</label>
+          <div class="col-8">
+            <select id="sempleado" class="form-control" name="dni_empleado">
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-4 col-form-label"></label>
+          <div class="col-8">
+            <button type="submit" class="btn btn-primary form-control">
+              <i class="fas fa-sign-in-alt"></i> Registrar al Inventario
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {%endblock%} {%block insertjs%}
+  <script src="{% static 'js/jqnw.js' %}"></script>
+  {%endblock%}
+</div>
